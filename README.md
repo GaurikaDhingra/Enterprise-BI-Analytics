@@ -224,7 +224,19 @@ By consolidating operational, customer, subscription, and support data into a un
 
 ## Data Model
 
-Star schema with `orders` as the primary fact table, surrounded by `customers`, `products`, and `Dim_Date` as core dimensions, while `subscriptions` and `support_tickets` act as supporting fact tables connected through `customer_id`.
+## Data Model
+
+The solution combines a traditional star-schema foundation with analytical support tables used for customer, subscription, and support intelligence reporting.
+Core analytical model:
+- Fact Table: Orders
+- Dimensions: Customers, Products, Dim_Date
+- Supporting Analytical Tables:
+  - RFM Segments
+  - Churn Risk
+  - Customer Cohort
+  - Customer Spending Tier
+  - Subscriptions
+  - Support Tickets
 
 **Eight analytical views** sit between the raw tables and the reporting layer:
 
@@ -237,7 +249,9 @@ Star schema with `orders` as the primary fact table, surrounded by `customers`, 
 - vw_customer_cohort
 - vw_customer_spending_tier
 
-This architecture centralizes business logic and ensures consistent KPI definitions across SQL and Power BI.
+This architecture enables centralized KPI calculations while supporting advanced analytics, including cohort analysis, churn modeling, RFM segmentation, retention tracking, and SLA monitoring.
+
+![Data Model](data_model/star_schema.png)
 
 ---
 
@@ -255,9 +269,10 @@ This architecture centralizes business logic and ensures consistent KPI definiti
 ## Repository Contents
 
 ```text
-├── sql/                     → Audit, remediation, KPI, and advanced analytics queries
-├── dashboards/              → Power BI dashboard (.pbix) and Dashboard exports, visuals
-├── datasets/                → csv files
+├── dashboards/          → Power BI dashboard screenshots and PBIX file
+├── data_model/          → Semantic model and relationship diagram
+├── datasets/            → Raw CSV datasets
+├── sql_scripts/         → Audit, remediation, KPI, and advanced analytics SQL
 └── README.md
 ```
 
