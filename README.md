@@ -224,8 +224,6 @@ By consolidating operational, customer, subscription, and support data into a un
 
 ## Data Model
 
-## Data Model
-
 The solution combines a traditional star-schema foundation with analytical support tables used for customer, subscription, and support intelligence reporting.
 Core analytical model:
 - Fact Table: Orders
